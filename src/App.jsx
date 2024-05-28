@@ -14,43 +14,43 @@ const data = [
   { rank: 10, name: "strategy_name", calmarRatio: 2.04, overallProfit: 244555, avgDailyProfit: 198.66, winPercentage: 0.62, price: "-", action: "View" },
 ];
 
-const App = () => {
+const Leaderboard = () => {
   return (
-    <div className="container mx-auto p-6">
+    <div className="container mx-auto p-8">
       <div className="bg-white shadow-lg rounded-lg overflow-hidden">
-        <h2 className="text-3xl font-semibold text-center p-6 bg-[#E27498] text-white">Basic Backtest</h2>
+        <h2 className="text-4xl font-extrabold text-center py-6  bg-[#E27498] text-white shadow-md">Basic Backtest</h2>
         <div className="overflow-x-auto">
           <table className="min-w-full bg-white">
-            <thead className="bg-gray-900 text-white">
+            <thead className="bg-gray-800 text-white">
               <tr>
-                <th className="py-3 px-5">Rank</th>
-                <th className="py-3 px-5">Name</th>
-                <th className="py-3 px-5">Calmar Ratio</th>
-                <th className="py-3 px-5">Overall Profit</th>
-                <th className="py-3 px-5">Avg. Daily Profit</th>
-                <th className="py-3 px-5">Win %(Day)</th>
-                <th className="py-3 px-5">Price (Rs)</th>
-                <th className="py-3 px-5">Action</th>
+                <th className="py-4 px-6 text-left font-semibold">Rank</th>
+                <th className="py-4 px-6 text-left font-semibold">Name</th>
+                <th className="py-4 px-6 text-center font-semibold">Calmar Ratio</th>
+                <th className="py-4 px-6 text-right font-semibold">Overall Profit</th>
+                <th className="py-4 px-6 text-right font-semibold">Avg. Daily Profit</th>
+                <th className="py-4 px-6 text-center font-semibold">Win %(Day)</th>
+                <th className="py-4 px-6 text-center font-semibold">Price (Rs)</th>
+                <th className="py-4 px-6 text-center font-semibold">Action</th>
               </tr>
             </thead>
             <tbody>
-              {data.map((item) => (
-                <tr key={item.rank} className="bg-white border-b hover:bg-gray-100 transition duration-150">
-                  <td className="py-3 px-5 text-center">{item.rank}</td>
-                  <td className="py-3 px-5">{item.name}</td>
-                  <td className="py-3 px-5 text-center">{item.calmarRatio.toFixed(2)}</td>
-                  <td className="py-3 px-5 text-right">{item.overallProfit.toLocaleString()}</td>
-                  <td className="py-3 px-5 text-right">{item.avgDailyProfit.toFixed(2)}</td>
-                  <td className="py-3 px-5 text-center">{(item.winPercentage * 100).toFixed(2)}%</td>
-                  <td className="py-3 px-5 text-center">{item.price === "-" ? "-" : item.price.toLocaleString()}</td>
-                  <td className="py-3 px-5 text-center">
+              {data.map((item, index) => (
+                <tr key={item.rank} className={`${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'} border-b hover:bg-gray-100 transition duration-150`}>
+                  <td className="py-4 px-6 text-left">{item.rank}</td>
+                  <td className="py-4 px-6">{item.name}</td>
+                  <td className="py-4 px-6 text-center">{item.calmarRatio.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-right">{item.overallProfit.toLocaleString()}</td>
+                  <td className="py-4 px-6 text-right">{item.avgDailyProfit.toFixed(2)}</td>
+                  <td className="py-4 px-6 text-center">{(item.winPercentage * 100).toFixed(2)}%</td>
+                  <td className="py-4 px-6 text-center">{item.price === "-" ? "-" : item.price.toLocaleString()}</td>
+                  <td className="py-4 px-6 text-center">
                     {item.action === "View" ? (
                       <button className="text-blue-500 hover:text-blue-700 transition duration-150">
-                        <FaEye />
+                        <FaEye size={18} />
                       </button>
                     ) : (
                       <button className="text-green-500 hover:text-green-700 transition duration-150">
-                        <FaShoppingCart />
+                        <FaShoppingCart size={18} />
                       </button>
                     )}
                   </td>
@@ -64,6 +64,7 @@ const App = () => {
   );
 };
 
-export default App;
+export default Leaderboard;
+
 
 
